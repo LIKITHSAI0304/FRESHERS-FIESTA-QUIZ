@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Host Results</title>
+</head>
+<body>
+
+<h2>Quiz Results (Host Only)</h2>
+<button onclick="loadResults()">Load Results</button>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Register No</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody id="table"></tbody>
+</table>
+
+<script>
+function loadResults() {
+    let results = JSON.parse(localStorage.getItem("results")) || [];
+    let table = document.getElementById("table");
+    table.innerHTML = "";
+
+    results.forEach(r => {
+        table.innerHTML += `
+            <tr>
+                <td>${r.name}</td>
+                <td>${r.reg}</td>
+                <td>${r.score}</td>
+            </tr>`;
+    });
+}
+</script>
+
+</body>
+</html>
